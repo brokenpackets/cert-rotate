@@ -8,6 +8,12 @@ user = "admin"
 passwd = "Arista"
 ssl._create_default_https_context = ssl._create_unverified_context
 
+### List of Arista devices ###
+dev_list = ['192.168.255.5',
+            '192.168.255.6',
+            '192.168.255.7',
+            '192.168.255.8']
+
 #VARIABLES
 certname = 'certname'
 keyname = 'key'
@@ -19,8 +25,8 @@ org = 'Example'
 ou = 'IT'
 
 def main():
-  for SwitchNumber in range(1, 11): # Runs against 192.168.255.1-10 in order
-    ip = "192.168.255." + str(SwitchNumber)
+  for switch in dev_list:
+    ip = switch
     #SESSION SETUP FOR eAPI TO DEVICE
     url = "https://%s:%s@%s/command-api" % (user, passwd, ip)
     ss = Server(url)
