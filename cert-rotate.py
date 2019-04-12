@@ -41,7 +41,8 @@ def main():
       ' organization-unit '+ou+
       ' subject-alternative-name dns '+fqdn ])
       response = ss.runCmds( 1, [ 'enable', 'configure', 'management security',
-      'ssl profile https-secure', 'certificate certname key key' ])
+      'ssl profile https-secure', 'tls versions 1.2', 'cipher-list HIGH:!NULL:!MD5:!aNULL',
+      'certificate certname key key' ])
       response = ss.runCmds( 1, [ 'enable', 'configure', 'management api http-commands',
       'protocol https ssl profile https-secure' ])
     except:
